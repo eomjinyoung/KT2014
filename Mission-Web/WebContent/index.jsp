@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>Insert title here2</title>
 <link rel="stylesheet" href="/Mission-Web/css/layout.css" />
 <link rel="stylesheet" href="/Mission-Web/css/board.css" />
 </head>
