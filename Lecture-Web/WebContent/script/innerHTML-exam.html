@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<script>
+
+	function countIncrease() {
+		var spanObj = document.getElementById('countSpan');
+	//	alert(spanObj.innerHTML);
+		spanObj.innerHTML = parseInt(spanObj.innerHTML) + 1;
+	}
+</script>
+
+</head>
+<body>
+	<span id="countSpan">0</span>번 클릭
+	<input type="button" name="button" value="클릭" onclick="countIncrease(value)" />
+</body>
+</html>

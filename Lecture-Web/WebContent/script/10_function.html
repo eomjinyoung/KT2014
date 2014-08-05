@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+	<script>
+		// 함수 선언
+		function sum(var1, var2) {
+			return var1 + var2;
+		}
+		
+		function returnTest() {
+			alert('문장A');
+			return;
+		}
+		
+		function returnTest2(var1) {
+			alert(var1);
+			return;
+		}
+		
+		function getArea(r) {
+			return r * r * 3.141592;
+		}
+		
+		var radius = 10;
+		var area = getArea(radius);
+		alert('반지름 ' + 10 + '의 넓이 ' + area);
+		
+		var s = sum(100, 200);
+		alert(s);
+		returnTest();
+		returnTest2('A');
+		returnTest2(10);
+		returnTest2(12.34);
+		returnTest2("Hello");
+	</script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
