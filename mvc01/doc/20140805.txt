@@ -19,5 +19,39 @@ apply plugin: '플러그인명'
 :eclipseWtp => 이클립스 웹 플러그인을 위한 설정 파일 생성/갱신
  (:eclipseWtpComponent, :eclipseWtpFacet, ...)
 
+
 4) java 기본 명령
- 
+:compileJava => /src/main/java 폴더에 있는 자바 소스 파일을 컴파일한다.
+                /build/classes/main/ 폴더에 컴파일 파일을 둔다.
+:clean => /build 폴더 삭제
+:processResources => /src/main/resources 폴더에 있는 파일을 
+                    /build/resources/main 폴더로 복사한다.
+:compileTestJava => /src/test/java 폴더의 소스파일 컴파일.
+     => compileJava, processResources, class 를 포함한다.
+:processTestResouces => /src/test/resources 폴더파일 복사.
+:classes => 컴파일과 리소스 파일 복사 함께 수행. compileJava, processResources
+
+5) 컴파일 시 한글 주석에 대한 오류 해결
+:compileJava 태스크는 컴파일할 때 소스 파일의 인코딩이 JVM의 기본 인코딩으로 되었 있다고 간주한다.
+:compileJava 태스크의 인코딩 환경 정보를 변경해야 한다.
+태스크이름 {
+  프로퍼티명.프로퍼티명.프로퍼티명 = 값
+  메서드명 {
+    프로퍼티명.프로퍼티명 = 값
+ }
+}
+                    
+                 
+
+
+
+
+
+
+
+
+
+
+
+
+
