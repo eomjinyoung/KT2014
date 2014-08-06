@@ -40,7 +40,17 @@ apply plugin: '플러그인명'
     프로퍼티명.프로퍼티명 = 값
  }
 }
-                    
+
+6) JRE, JDK, JavaSE, JavaEE 
+7) JavaEE와 구현서버의 관계
+8) repositories {}
+=> 의존 라이브러리를 제공하는 서버 설정
+9) dependencies {}
+=> 다운로드 받을 의존 라이브러리 지정
+=> compile group:'그룹명', name:'라이브러리명', version:'버전'
+=> compile '그룹명:라이브러리명:버전'      
+=> 라이브러리 정보 알아내는 방법: http://www.mvnrepository.com 에서 검색
+               
                  
 
 
