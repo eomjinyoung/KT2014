@@ -3,7 +3,7 @@ apply plugin: 'eclipse-wtp'
 apply plugin: 'war'
 
 compileJava {
-	options.encoding = 'UTF-8'
+	options.encoding = 'MS949'
 }
 
 eclipse {
@@ -17,9 +17,14 @@ eclipse {
 
 repositories {
   mavenCentral()
+  
+  flatDir {
+    dirs 'lib'
+  }
 }
 
 dependencies {
+	compile name:'ojdbc14'
 	compile 'com.servlets:cos:09May2002'
 	compile 'javax.servlet:jstl:1.2'
 }
