@@ -9,4 +9,15 @@
 
 * Gradle 설정 파일
 - build.gradle
-1) 
+1) 설정 파일 스크립트 -> Groovy DSL
+2) 사용할 도구를 임포트
+apply plugin: '플러그인명'
+기본으로 임포트 해야할 플러그인: java, eclipse-wtp, war
+3) eclipse-wtp, war 기본 명령
+:eclipse => 모든 이클립스 설정파일 생성 (기존에 파일이 있으면 갱신한다)\
+:eclipseClasspath => .classpath 파일 생성/갱신
+:eclipseWtp => 이클립스 웹 플러그인을 위한 설정 파일 생성/갱신
+ (:eclipseWtpComponent, :eclipseWtpFacet, ...)
+
+4) java 기본 명령
+ 
