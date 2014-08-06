@@ -13,21 +13,18 @@ public class ConnectionFactory {
 		
 		try {
 			
-			// 1. 드라이버 로딩
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String url = "jdbc:oracle:thin:@192.168.0.16:1521:xe";
 			String user = "hr";
 			String password = "hr";
 			
 			con = DriverManager.getConnection(url, user, password);
 			
-			// 2. 연결객체 생성
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		// 3. 생성된 연결객체 리턴
 		return con;
 	}
 	
