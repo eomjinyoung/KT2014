@@ -1,27 +1,19 @@
 <%@page import="kr.co.kt.board.db.BoardVO"%>
 <%@page import="kr.co.kt.board.db.BoardDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-
-<%
-	int no = Integer.parseInt(request.getParameter("no"));
-	BoardDAO dao = new BoardDAO();
-	BoardVO board = dao.selectByNo(no);
-	pageContext.setAttribute("board", board);
-%>    
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/Mission-Web/css/layout.css" />
-<link rel="stylesheet" href="/Mission-Web/css/board.css" />
+<link rel="stylesheet" href="../css/layout.css" />
+<link rel="stylesheet" href="../css/board.css" />
 
 <script>
 	function doAction() {
-		location.href = "list.jsp";
+		location.href = "list";
 	}
 </script>
 </head>
@@ -31,41 +23,41 @@
 </div>
 <div id="content" align="center">
 	<hr width="80%" />
-	<h2>°Ô½Ã¹° ¼öÁ¤</h2>
+	<h2>ê²Œì‹œë¬¼ ìˆ˜ì •</h2>
 	<hr width="80%" />
 	<br>
 	
-	<form action="update.jsp" method="post">
+	<form action="update" method="post">
 	<input type="hidden" name="no" value="${ param.no }" />
 	<table width="80%">
 		<tr>
-			<th width="25%">¹øÈ£</th>
+			<th width="25%">ë²ˆí˜¸</th>
 			<td>${ board.no }</td>
 		</tr>
 		<tr>
-			<th>Á¦¸ñ</th>
+			<th>ì œëª©</th>
 			<td>
 				<input type="text" name="title" size="50" value="<c:out value="${board.title }" />" />
 			</td>
 		</tr>
 		<tr>
-			<th>±Û¾´ÀÌ</th>
+			<th>ê¸€ì“´ì´</th>
 			<td>${ board.writer }</td>
 		</tr>
 		<tr>
-			<th>³»¿ë</th>
+			<th>ë‚´ìš©</th>
 			<td>
 				<textarea name="content" rows="7" cols="50">${board.content }</textarea>
 			</td>
 		</tr>
 		<tr>
-			<th>Á¶È¸¼ö</th>
+			<th>ì¡°íšŒìˆ˜</th>
 			<td>${ board.viewCnt }</td>
 		</tr>
 	</table>
 		<br/>
-		<input type="submit" value=" ¼öÁ¤ " />&nbsp;
-		<input type="button" value=" ¸ñ·Ï " onclick="doAction()" />
+		<input type="submit" value=" ìˆ˜ì • " />&nbsp;
+		<input type="button" value=" ëª©ë¡ " onclick="doAction()" />
 	</form>
 </div>
 <div id="bottom">

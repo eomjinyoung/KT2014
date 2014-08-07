@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.kt.board.db.BoardDAO;
+import kt.c.dao.BoardDAO;
 
 @SuppressWarnings("serial")
 @WebServlet("/board/delete")

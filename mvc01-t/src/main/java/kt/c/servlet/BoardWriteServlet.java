@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.co.kt.board.db.BoardDAO;
-import kr.co.kt.board.db.BoardFileVO;
-import kr.co.kt.board.db.BoardVO;
-import kr.co.kt.util.BitFileNamePolicy;
+import kt.c.dao.BoardDAO;
+import kt.c.util.BitFileNamePolicy;
+import kt.c.vo.BoardFileVO;
+import kt.c.vo.BoardVO;
 import kt.c.vo.LoginVO;
 
 import com.oreilly.servlet.MultipartRequest;
