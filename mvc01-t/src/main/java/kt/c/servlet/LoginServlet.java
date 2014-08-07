@@ -42,14 +42,17 @@ public class LoginServlet extends HttpServlet {
 			rd.forward(request, response);
 			
 		} else {
-			//response.sendRedirect("login");
+			// Redirect 방식
+			response.sendRedirect("login");
+			
+			/* Refresh 방식
 			response.setHeader("Refresh", "5;url=http://www.naver.com");
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<html><head><title>오호라</title></head>");
 			out.println("<body>잠시 기다리세요.. 네이버로 이동합니다.</body>");
 			out.println("</html>");
-			
+			*/
 		}
 	}
 }
