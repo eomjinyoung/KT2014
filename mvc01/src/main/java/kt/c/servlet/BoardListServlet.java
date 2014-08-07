@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.kt.board.db.BoardDAO;
 
+@SuppressWarnings("serial")
 @WebServlet("/board/list")
 public class BoardListServlet extends HttpServlet {
 	@Override
