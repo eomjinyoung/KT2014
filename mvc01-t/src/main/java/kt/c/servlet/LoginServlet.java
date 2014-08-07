@@ -1,6 +1,7 @@
 package kt.c.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,13 +36,20 @@ public class LoginServlet extends HttpServlet {
 										.setPassword(request.getParameter("password")));
 		
 		if (userVO != null) {
-			request.setAttribute("userVO", userVO);
+			request.getSession().setAttribute("userVO", userVO);
 			RequestDispatcher rd = request.getRequestDispatcher(
 					"/view/auth/loginProcess.jsp");
 			rd.forward(request, response);
 			
 		} else {
-			response.sendRedirect("login");
+			//response.sendRedirect("login");
+			response.setHeader("Refresh", "5;url=http://www.naver.com");
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<html><head><title>오호라</title></head>");
+			out.println("<body>잠시 기다리세요.. 네이버로 이동합니다.</body>");
+			out.println("</html>");
+			
 		}
 	}
 }

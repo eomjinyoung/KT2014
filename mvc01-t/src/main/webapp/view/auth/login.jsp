@@ -34,8 +34,8 @@
 </script>
 
 
-<link rel="stylesheet" href="/Mission-Web/css/layout.css" />
-<link rel="stylesheet" href="/Mission-Web/css/board.css" />
+<link rel="stylesheet" href="../css/layout.css" />
+<link rel="stylesheet" href="../css/board.css" />
 </head>
 <body>
 	<div id="header">
