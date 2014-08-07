@@ -63,6 +63,15 @@ apply plugin: '플러그인명'
 => 웹 애플리케이션이 시작하거나 종료할 때 호출되는 메서드를 정의한다.
 => 클래스를 만들어 DD File(Deploy Descriptor; web.xml)에 등록한다.
 
+13) Refresh와 Redirect의 차이점
+=> 공통: 웹 브라우저에게 다시 요청해야 할 URL을 전달한다.
+=> Refresh : URL + 타이머 + 콘텐츠
+=> Redirect: URL 
+
+14) HTTP 프로토콜의 의미
+=> 미니 웹 브라우저를 통해 HTTP 요청과 응답을 확인
+
+
 
 
 
