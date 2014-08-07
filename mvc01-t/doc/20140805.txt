@@ -57,6 +57,32 @@ apply plugin: '플러그인명'
 => 객체를 바이트 배열로 내보내는 것(Serialize)
 => 바이트 배열을 객체로 복원하는 것(Deserialize)
 
+11) Filter
+
+12) ServletContextListener
+=> 웹 애플리케이션이 시작하거나 종료할 때 호출되는 메서드를 정의한다.
+=> 클래스를 만들어 DD File(Deploy Descriptor; web.xml)에 등록한다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

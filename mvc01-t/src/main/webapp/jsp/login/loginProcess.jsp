@@ -1,51 +1,24 @@
-<%@page import="kr.co.kt.login.db.LoginDAO"%>
-<%@page import="kr.co.kt.login.db.LoginVO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%
-	request.setCharacterEncoding("euc-kr");
-
-	// ¿äÃ»°´Ã¼¿¡¼­ Á¤º¸¸¦ ¾ò¾î¿Í VO¿¡ ¼³Á¤
-	String id = request.getParameter("id");
-	String password = request.getParameter("password");
-	
-	LoginVO loginVO = new LoginVO();
-	loginVO.setId(id);
-	loginVO.setPassword(password);
-	
-	// ·Î±×ÀÎ ¼öÇà(DB) 
-	// login() ¸®ÅÏ°ª          null : ½ÇÆÐ
-	//               not null : ¼º°ø
-	LoginDAO dao = new LoginDAO();
-	LoginVO userVO = dao.login(loginVO);
-	
-	String msg = "";
-	String url = "";
-	
-	if(userVO != null) {
-		
-		session.setAttribute("userVO", userVO);
-		
-		if(userVO.getType().equalsIgnoreCase("S")) {
-			msg = "°ü¸®ÀÚ´Ô È¯¿µÇÕ´Ï´Ù	";
-		} else {
-			msg = userVO.getId() + "´Ô È¯¿µÇÕ´Ï´Ù.";
-		}
-		
-		url = "/Mission-Web";
-		
-	} else {
-		msg = "ID ¶Ç´Â PASSWORD°¡ Àß¸ø ÀÔ·ÂµÇ¾ú½À´Ï´Ù";
-		url = "login.jsp";
-	}
-%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<c:choose>
+	<c:when  test="${userVO.type == 'S'}">
+		<c:set var="message" value="ê´€ë¦¬ìžë‹˜ í™˜ì˜í•©ë‹ˆë‹¤."/>
+	</c:when>
+	<c:otherwise>
+		<c:set var="message" value="${userVO.id}ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤."/>
+	</c:otherwise>
+</c:choose>  
+<html>
+<head></head>
+<body>
 <script>
-	alert('<%= msg %>');
-	location.href = "<%= url %>";
+	alert('${message}');
+	location.href = "${contextRoot}/";
 </script>
+</body>
+</html>
 
-ss
 
 
 

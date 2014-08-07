@@ -2,6 +2,11 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>Mission-Web</display-name>
   
+  <!-- 이벤트를 처리할 리스너 등록 -->
+  <listener>
+  	<listener-class>kt.c.listener.ContextLoaderListener</listener-class>
+  </listener>
+  
   <!-- 필터 정의  -->
   <filter>
   	<filter-name>CharacterEncodingFilter</filter-name>
