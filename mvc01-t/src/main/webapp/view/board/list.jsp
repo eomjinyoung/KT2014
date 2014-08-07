@@ -1,6 +1,3 @@
-<%@page import="kr.co.kt.board.db.BoardVO"%>
-<%@page import="java.util.List"%>
-<%@page import="kr.co.kt.board.db.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

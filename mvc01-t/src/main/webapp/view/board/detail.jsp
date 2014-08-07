@@ -1,11 +1,3 @@
-<%@page import="kr.co.kt.board.db.BoardFileVO"%>
-<%@page import="java.util.List"%>
-<%@page import="kr.co.kt.board.db.BoardVO"%>
-<%@page import="kr.co.kt.board.db.BoardDAO"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="kr.co.kt.util.ConnectionFactory"%>
-<%@page import="java.sql.Connection"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
