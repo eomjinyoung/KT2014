@@ -38,7 +38,7 @@
 	<div id="content">
 		<div align="center">
 			<hr width="80%" />
-			<h2>게시판 목록(by MVC)</h2>
+			<h2>게시판 목록(by MVC:${param.who})</h2>
 			<hr width="80%" />
 			<br />
 

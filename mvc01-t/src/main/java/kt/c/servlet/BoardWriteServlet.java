@@ -38,7 +38,7 @@ public class BoardWriteServlet extends HttpServlet {
 				request
 				, saveFolder			// 저장될 경로
 				, 1024 * 1024 * 3 		// 파일에 올릴 최대크기 : 3MB
-				, "euc-kr"				// 인코딩 타입
+				, "UTF-8"				// 인코딩 타입
 				, new BitFileNamePolicy()
 				);
 
