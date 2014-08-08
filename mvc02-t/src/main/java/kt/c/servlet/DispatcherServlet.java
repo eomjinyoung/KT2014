@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kt.c.control.BoardListController;
 import kt.c.control.Controller;
+import kt.c.control.LoginController;
 
 @WebServlet("*.do")
 @SuppressWarnings("serial")
@@ -30,12 +31,22 @@ public class DispatcherServlet extends HttpServlet {
 		  if (servletPath.equals("/board/list.do")) {
 		  	pageController = new BoardListController();
 		  	viewUrl = pageController.execute(request, response);
+		  
+		  } else if (servletPath.equals("/auth/login.do")) {
+		  	pageController = new LoginController();
+		  	viewUrl = pageController.execute(request, response);
+		  
 		  } else {
 		  	throw new Exception("요구하는 페이지가 없습니다.");
 		  }
 	  
-		  RequestDispatcher rd = request.getRequestDispatcher(viewUrl);
-		  rd.include(request, response);
+		  if (viewUrl.startsWith("redirect:")) {
+		  	response.sendRedirect(viewUrl.substring(9));
+		  
+		  } else {
+		  	RequestDispatcher rd = request.getRequestDispatcher(viewUrl);
+		  	rd.include(request, response);
+		  }
 		  
 	  } catch(Throwable error) {
 	  	StringWriter out = new StringWriter();

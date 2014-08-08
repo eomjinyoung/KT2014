@@ -47,7 +47,7 @@
 		<hr width="80%" />
 		<br/>
 		
-		<form name="lForm" action="login" method="post" onSubmit="return chkForm()">
+		<form name="lForm" action="login.do" method="post" onSubmit="return chkForm()">
 		<table width="40%">
 			<tr>
 				<th>ID</th>

@@ -27,11 +27,11 @@
 			<c:if test="${ userVO.type eq 'S' }">
 			회원관리 ||
 			</c:if>
-			<a href="${contextRoot}/board/list">게시판</a> ||
+			<a href="${contextRoot}/board/list.do">게시판</a> ||
 			<c:choose>
 				<c:when test="${empty userVO}">
 					회원가입 ||
-					<a href="${contextRoot}/auth/login">로그인</a> ||
+					<a href="${contextRoot}/auth/login.do">로그인</a> ||
 				</c:when>
 				<c:otherwise>
 					마이페이지 ||
