@@ -79,7 +79,8 @@ public class BoardDAO {
 
 				list.add(board);
 			}
-
+			return list;
+			
 		} catch(Exception e) {
 			throw e;
 
@@ -88,8 +89,6 @@ public class BoardDAO {
 			try {pstmt.close();} catch (Exception e) {}
 			connectionFactory.returnConnection(con);
 		}
-
-		return list;
 	}
 
 	public BoardVO selectByNo(int no) throws Exception {
@@ -119,7 +118,8 @@ public class BoardDAO {
 			board.setContent(rs.getString("content"));
 			board.setViewCnt(rs.getInt("view_cnt"));
 			board.setRegDate(rs.getString("reg_date"));
-
+			return board;
+			
 		} catch(Exception e) {
 			throw e;
 
@@ -128,8 +128,6 @@ public class BoardDAO {
 			try {pstmt.close();} catch (Exception e) {}
 			connectionFactory.returnConnection(con);
 		}
-
-		return board;
 	}
 
 	public void insert(BoardVO board) throws Exception {
@@ -307,8 +305,6 @@ public class BoardDAO {
 			try {pstmt.close();} catch (Exception e) {}
 			connectionFactory.returnConnection(con);
 		}
-
-		
 	}
 
 	public void deleteFile(int boardNo) throws Exception {
