@@ -4,12 +4,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import kt.c.control.BoardDetailController;
-import kt.c.control.BoardListController;
-import kt.c.control.LoginController;
+public class ContextLoaderListener01 implements ServletContextListener {
 
-public class ContextLoaderListener implements ServletContextListener {
-	
 	/* 웹 애플리케이션이 시작되면 호출된다.*/
 	@Override
   public void contextInitialized(ServletContextEvent sce) {
@@ -17,9 +13,7 @@ public class ContextLoaderListener implements ServletContextListener {
 	  // 웹 애플리케이션을 시작할 때 서블릿이나 필터 등이 사용할 데이터 준비 
 		ServletContext ctx = sce.getServletContext();
 		ctx.setAttribute("contextRoot", ctx.getContextPath());
-		ctx.setAttribute("/board/list.do", new BoardListController());
-		ctx.setAttribute("/auth/login.do", new LoginController());
-		ctx.setAttribute("/board/detail.do", new BoardDetailController());
+	  
   }
 
 	/* 웹 애플리케이션을 종료하기 전에 호출된다.*/
@@ -31,13 +25,3 @@ public class ContextLoaderListener implements ServletContextListener {
   }
 
 }
-
-
-
-
-
-
-
-
-
-

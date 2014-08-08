@@ -10,17 +10,17 @@
 <link rel="stylesheet" href="/Mission-Web/css/board.css" />
 <script> 
 	function goWriteForm() {
-		location.href = "write";
+		location.href = "write.do";
 	}
 	
 	function doAction(boardNo) {
 		<c:choose>
 			<c:when test="${not empty userVO}">
-				location.href = "detail?type=list&no=" + boardNo;
+				location.href = "detail.do?type=list&no=" + boardNo;
 			</c:when>
 			<c:otherwise>
 				if(confirm("로그인 후 사용가능합니다.\n로그인 페이지로 이동하시겠습니까?"))
-					location.href = "../auth/login";
+					location.href = "../auth/login.do";
 			</c:otherwise>
 		</c:choose>
 	}

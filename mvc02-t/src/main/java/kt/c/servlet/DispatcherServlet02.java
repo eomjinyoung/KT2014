@@ -3,19 +3,25 @@ package kt.c.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kt.c.control.BoardDetailController;
+import kt.c.control.BoardListController;
 import kt.c.control.Controller;
+import kt.c.control.LoginController;
 
-@WebServlet("*.do")
+//@WebServlet("*.do")
 @SuppressWarnings("serial")
-public class DispatcherServlet extends HttpServlet {
+public class DispatcherServlet02 extends HttpServlet {
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
@@ -23,14 +29,18 @@ public class DispatcherServlet extends HttpServlet {
 	  response.setContentType("text/html; charset=UTF-8");
 	  
 	  try {
-	  	Object obj = this.getServletContext().getAttribute(servletPath);
-	  	if (obj == null || !(obj instanceof Controller)) {
-	  		throw new Exception("요구하는 페이지가 없습니다.");
-	  	}
-	  	
-		  Controller pageController = (Controller)obj;
+		  Controller pageController = null;
+		  String viewUrl = null;
+		  
+		  switch (servletPath) {
+		  case "/board/list.do": pageController = new BoardListController(); break;
+		  case "/auth/login.do": pageController = new LoginController(); break;
+		  case "/board/detail.do": pageController = new BoardDetailController(); break;
+		  default:
+		  	throw new Exception("요구하는 페이지가 없습니다.");
+		  }
 	  
-		  String viewUrl = pageController.execute(request, response);
+		  viewUrl = pageController.execute(request, response);
 		  
 		  if (viewUrl.startsWith("redirect:")) {
 		  	response.sendRedirect(viewUrl.substring(9));
