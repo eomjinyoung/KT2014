@@ -7,8 +7,10 @@ import javax.servlet.ServletContextListener;
 import kt.c.control.BoardDeleteController;
 import kt.c.control.BoardDetailController;
 import kt.c.control.BoardListController;
+import kt.c.control.BoardUpdateController;
 import kt.c.control.BoardWriteController;
 import kt.c.control.LoginController;
+import kt.c.control.LogoutController;
 
 public class ContextLoaderListener implements ServletContextListener {
 	
@@ -24,6 +26,8 @@ public class ContextLoaderListener implements ServletContextListener {
 		ctx.setAttribute("/board/detail.do", new BoardDetailController());
 		ctx.setAttribute("/board/delete.do", new BoardDeleteController());
 		ctx.setAttribute("/board/write.do", new BoardWriteController());
+		ctx.setAttribute("/board/update.do", new BoardUpdateController());
+		ctx.setAttribute("/auth/logout.do", new LogoutController());
   }
 
 	/* 웹 애플리케이션을 종료하기 전에 호출된다.*/

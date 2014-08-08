@@ -11,7 +11,7 @@
 
 <script>
 	function doAction() {
-		location.href = "list";
+		location.href = "list.do";
 	}
 </script>
 </head>
@@ -25,7 +25,7 @@
 	<hr width="80%" />
 	<br>
 	
-	<form action="update" method="post">
+	<form action="update.do" method="post">
 	<input type="hidden" name="no" value="${ param.no }" />
 	<table width="80%">
 		<tr>
