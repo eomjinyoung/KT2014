@@ -13,8 +13,10 @@ import kt.c.control.LoginController;
 import kt.c.control.LogoutController;
 import kt.c.dao.BoardDAO;
 import kt.c.dao.LoginDAO;
+import kt.c.util.ConnectionFactory;
 
 public class ContextLoaderListener implements ServletContextListener {
+	ConnectionFactory connectionFactory;
 	
 	/* 웹 애플리케이션이 시작되면 호출된다.*/
 	@Override
@@ -24,8 +26,13 @@ public class ContextLoaderListener implements ServletContextListener {
 		ServletContext ctx = sce.getServletContext();
 		ctx.setAttribute("contextRoot", ctx.getContextPath());
 		
+		connectionFactory = new ConnectionFactory();
+		
 		BoardDAO boardDAO = new BoardDAO();
+		boardDAO.setConnectionFactory(connectionFactory);
+		
 		LoginDAO loginDAO = new LoginDAO();
+		loginDAO.setConnectionFactory(connectionFactory);
 		
 		BoardListController boardListController = new BoardListController();
 		boardListController.setBoardDAO(boardDAO);
@@ -59,10 +66,25 @@ public class ContextLoaderListener implements ServletContextListener {
   public void contextDestroyed(ServletContextEvent sce) {
 		System.out.println("ContextLoaderListener.contextDestroyed()");
 	  // 웹 애플리케이션을 종료하기 전에 마무리할 작업 수행
-	  
+	  connectionFactory.closeAll();
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -2,8 +2,6 @@ package kt.c.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ConnectionFactory {
@@ -26,7 +24,7 @@ public class ConnectionFactory {
 	
 	public void returnConnection(Connection con) {
 		try {
-			if (!con.isClosed() && con.isValid(1)) {
+			if (!con.isClosed()) {
 				conlist.add(con);
 			}
 		} catch (Exception e) {}
