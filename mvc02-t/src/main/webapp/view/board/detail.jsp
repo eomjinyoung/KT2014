@@ -12,16 +12,16 @@
 	function doAction(type) {
 		switch(type) {
 		case 'U' : 
-			location.href = "update?no=${param.no}";
+			location.href = "update.do?no=${param.no}";
 			break;
 		case 'D' :
 			if(!confirm('삭제하시겠습니까')) {
 				return false;
 			}
-			location.href = "delete?no=${param.no}";
+			location.href = "delete.do?no=${param.no}";
 			break;
 		case 'L' :
-			location.href = "list";
+			location.href = "list.do";
 			break;
 		}
 	}

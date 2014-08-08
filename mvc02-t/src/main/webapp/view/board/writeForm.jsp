@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../css/board.css" />
 <script>
 	function doList() {
-		location.href = "list";
+		location.href = "list.do";
 	}
 	
 	function doWrite() {
@@ -55,7 +55,7 @@
 	<hr width="80%" />
 	<br/>
 	
-	<form name="wForm" action="write" 
+	<form name="wForm" action="write.do" 
 					   method="post"
 					   enctype="multipart/form-data"
 					   onsubmit="return doWrite()">

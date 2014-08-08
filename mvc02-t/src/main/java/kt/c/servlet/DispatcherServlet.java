@@ -25,7 +25,7 @@ public class DispatcherServlet extends HttpServlet {
 	  try {
 	  	Object obj = this.getServletContext().getAttribute(servletPath);
 	  	if (obj == null || !(obj instanceof Controller)) {
-	  		throw new Exception("요구하는 페이지가 없습니다.");
+	  		throw new Exception("요청하는 페이지가 없습니다.");
 	  	}
 	  	
 		  Controller pageController = (Controller)obj;
