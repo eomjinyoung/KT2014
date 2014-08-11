@@ -10,6 +10,13 @@
 . /Servers/Tomcat.../context.xml에  DataSource 설정
 . 톰캣 서버의 DataSource를 사용하기 위해 web.xml에 설정한다.
 . InitialContext의 lookup()으로 DataSource를 찾는다.
+5) 애노테이션을 이용하여 객체 생성 자동화 하기
+. 애노테이션 정의
+. 애노테이션을 사용
+. 애노테이션 정보를 추출
+. 애노테이션을 페이지 컨트롤러, DAO에 적용
+. ContextLoaderListener에서 애노테이션 정보를 추출하여 
+     페이지 컨트롤러와 DAO를 자동 생성
 5) Mybatis 적용
 
 
