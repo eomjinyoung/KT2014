@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 import kt.c.annotation.Component;
 
-public class ContextLoaderListener implements ServletContextListener {
+public class ContextLoaderListener01 implements ServletContextListener {
 	ServletContext ctx;
 	DataSource dataSource;
 	
