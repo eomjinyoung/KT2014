@@ -6,17 +6,16 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.sql.DataSource;
-
+import kt.c.util.ConnectionFactory;
 import kt.c.vo.BoardFileVO;
 import kt.c.vo.BoardVO;
 
 
-public class BoardDAO {
-	DataSource dataSource;
+public class BoardDAO01 {
+	ConnectionFactory connectionFactory;
 
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
+	public void setConnectionFactory(ConnectionFactory connectionFactory) {
+		this.connectionFactory = connectionFactory;
 	}
 
 	public int selectBoardNo() throws Exception {
@@ -29,7 +28,7 @@ public class BoardDAO {
 		ResultSet rs = null;
 
 		try {
-			con = dataSource.getConnection();
+			con = connectionFactory.getConnection();
 			pstmt = con.prepareStatement(sql.toString());
 			rs = pstmt.executeQuery();
 
@@ -43,10 +42,7 @@ public class BoardDAO {
 		} finally {
 			try {rs.close();} catch (Exception e) {}
 			try {pstmt.close();} catch (Exception e) {}
-			
-			// DataSource로부터 얻는 컨넥션 객체는 close()를 호출하면,
-			// DB서버와의 연결을 닫는 것이 아니라 DataSource에게 커넥션을 반납한다.
-			try {con.close();} catch (Exception e) {}
+			connectionFactory.returnConnection(con);
 		}
 	}
 
@@ -65,7 +61,7 @@ public class BoardDAO {
 		ResultSet rs = null;
 
 		try {
-			con = dataSource.getConnection();
+			con = connectionFactory.getConnection();
 			pstmt = con.prepareStatement(sql.toString());
 			rs = pstmt.executeQuery();
 
@@ -91,7 +87,7 @@ public class BoardDAO {
 		} finally {
 			try {rs.close();} catch (Exception e) {}
 			try {pstmt.close();} catch (Exception e) {}
-			try {con.close();} catch (Exception e) {}
+			connectionFactory.returnConnection(con);
 		}
 	}
 
@@ -110,7 +106,7 @@ public class BoardDAO {
 		ResultSet rs = null;
 
 		try {
-			con = dataSource.getConnection();
+			con = connectionFactory.getConnection();
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
@@ -130,7 +126,7 @@ public class BoardDAO {
 		} finally {
 			try {rs.close();} catch (Exception e) {}
 			try {pstmt.close();} catch (Exception e) {}
-			try {con.close();} catch (Exception e) {}
+			connectionFactory.returnConnection(con);
 		}
 	}
 
@@ -143,7 +139,7 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = dataSource.getConnection();
+			con = connectionFactory.getConnection();
 			pstmt = con.prepareStatement(sql.toString());
 			int index = 1;
 			pstmt.setInt(index++, board.getNo());
@@ -157,7 +153,7 @@ public class BoardDAO {
 
 		} finally {
 			try {pstmt.close();} catch (Exception e) {}
-			try {con.close();} catch (Exception e) {}
+			connectionFactory.returnConnection(con);
 		}
 	}
 
@@ -171,7 +167,7 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = dataSource.getConnection();
+			con = connectionFactory.getConnection();
 			pstmt = con.prepareStatement(sb.toString());
 			pstmt.setInt(1, no);
 			pstmt.executeUpdate();
@@ -181,7 +177,7 @@ public class BoardDAO {
 
 		} finally {
 			try {pstmt.close();} catch (Exception e) {}
-			try {con.close();} catch (Exception e) {}
+			connectionFactory.returnConnection(con);
 		}
 	}
 
@@ -195,7 +191,7 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = dataSource.getConnection();
+			con = connectionFactory.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, board.getTitle());
 			pstmt.setString(2, board.getContent());
@@ -207,7 +203,7 @@ public class BoardDAO {
 
 		} finally {
 			try {pstmt.close();} catch (Exception e) {}
-			try {con.close();} catch (Exception e) {}
+			connectionFactory.returnConnection(con);
 		}
 	}
 
@@ -220,7 +216,7 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = dataSource.getConnection();
+			con = connectionFactory.getConnection();
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setInt(1, no);
 			pstmt.executeUpdate();
@@ -230,7 +226,7 @@ public class BoardDAO {
 
 		} finally {
 			try {pstmt.close();} catch (Exception e) {}
-			try {con.close();} catch (Exception e) {}
+			connectionFactory.returnConnection(con);
 		}
 	}
 
@@ -244,7 +240,7 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = dataSource.getConnection();
+			con = connectionFactory.getConnection();
 			pstmt = con.prepareStatement(sql.toString());
 			int index = 1;
 			pstmt.setInt(index++, fileVO.getBoardNo());
@@ -259,7 +255,7 @@ public class BoardDAO {
 
 		} finally {
 			try {pstmt.close();} catch (Exception e) {}
-			try {con.close();} catch (Exception e) {}
+			connectionFactory.returnConnection(con);
 		}
 	}
 
@@ -272,7 +268,7 @@ public class BoardDAO {
 		ResultSet rs = null;
 
 		try {
-			con = dataSource.getConnection();
+			con = connectionFactory.getConnection();
 			StringBuilder sb = new StringBuilder();
 			sb.append("select no, file_ori_name, file_save_name, ");
 			sb.append("       file_size ");
@@ -307,7 +303,7 @@ public class BoardDAO {
 		} finally {
 			try {rs.close();} catch (Exception e) {}
 			try {pstmt.close();} catch (Exception e) {}
-			try {con.close();} catch (Exception e) {}
+			connectionFactory.returnConnection(con);
 		}
 	}
 
@@ -320,7 +316,7 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 
 		try {
-			con = dataSource.getConnection();
+			con = connectionFactory.getConnection();
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setInt(1, boardNo);
 			pstmt.executeUpdate();
@@ -329,7 +325,7 @@ public class BoardDAO {
 
 		} finally {
 			try {pstmt.close();} catch (Exception e) {}
-			try {con.close();} catch (Exception e) {}
+			connectionFactory.returnConnection(con);
 		}
 	}
 }

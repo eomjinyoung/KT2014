@@ -1,11 +1,8 @@
 package kt.c.listener;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import javax.sql.DataSource;
 
 import kt.c.control.BoardDeleteController;
 import kt.c.control.BoardDetailController;
@@ -16,9 +13,10 @@ import kt.c.control.LoginController;
 import kt.c.control.LogoutController;
 import kt.c.dao.BoardDAO;
 import kt.c.dao.LoginDAO;
+import oracle.jdbc.pool.OracleDataSource;
 
-public class ContextLoaderListener implements ServletContextListener {
-	DataSource dataSource;
+public class ContextLoaderListener02 implements ServletContextListener {
+	OracleDataSource dataSource;
 	
 	/* 웹 애플리케이션이 시작되면 호출된다.*/
 	@Override
@@ -29,11 +27,8 @@ public class ContextLoaderListener implements ServletContextListener {
 		ctx.setAttribute("contextRoot", ctx.getContextPath());
 
 		try {
-			// InitialContext : JNDI(Java Naming and Directory Interface) 자원을  조회할 때 사용하는 도구.
-			// JNDI? DB 커넥션, 스레드 등 자바 자원에 대해 이름을 부여하고 디렉토리 형식으로 분류 관리하는 서비스.
-			// 유사개념: 웹 도메인 서비스 
-			Context initCtx = new InitialContext();
-			dataSource = (DataSource)initCtx.lookup("java:/comp/env/jdbc/xe");
+			dataSource = new OracleDataSource();
+			dataSource.setURL("jdbc:oracle:thin:hr/hr@192.168.0.16:1521:xe");
 			
 			BoardDAO boardDAO = new BoardDAO();
 			boardDAO.setDataSource(dataSource);
@@ -77,6 +72,7 @@ public class ContextLoaderListener implements ServletContextListener {
 	public void contextDestroyed(ServletContextEvent sce) {
 		System.out.println("ContextLoaderListener.contextDestroyed()");
 		// 웹 애플리케이션을 종료하기 전에 마무리할 작업 수행
+		try {dataSource.close();} catch(Throwable e) {}
 	}
 
 }
