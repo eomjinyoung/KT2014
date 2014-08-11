@@ -1,8 +1,8 @@
 package kt.c.listener;
 
-import java.io.File;
 import java.lang.reflect.Method;
 import java.util.Enumeration;
+import java.util.Set;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -12,6 +12,8 @@ import javax.servlet.ServletContextListener;
 import javax.sql.DataSource;
 
 import kt.c.annotation.Component;
+
+import org.reflections.Reflections;
 
 public class ContextLoaderListener implements ServletContextListener {
 	ServletContext ctx;
@@ -33,17 +35,7 @@ public class ContextLoaderListener implements ServletContextListener {
 			dataSource = (DataSource)initCtx.lookup("java:/comp/env/jdbc/xe");
 			ctx.setAttribute("dataSource", dataSource);
 
-			
-			/* @Component 애노테이션이 붙은 클래스 이름 알아내기
-			 * => 페이지 컨트롤러와 DAO 객체에 @Component 애노테이션이 붙어 있다.
-			 * => 경로: /WEB-INF/classes/kt/c/control, /WEB-INF/classes/kt/c/dao
-			 */
-			String[] pathList = new String[]{
-					ctx.getRealPath("/WEB-INF/classes/kt/c/control"),
-					ctx.getRealPath("/WEB-INF/classes/kt/c/dao")};
-			createComponents(pathList);
-			
-			// ServletContext 저장소에 보관된 객체를 꺼내서 의존 객체를 주입한다.
+			createComponents();
 			injectDependencies();
 			
 		} catch (Exception e) {
@@ -51,43 +43,15 @@ public class ContextLoaderListener implements ServletContextListener {
 		}
 	}
 	
-	private void createComponents(String[] pathList) throws Exception {
-		File dir = null;
-		String absolutePath = null;
-		int index = 0;
-		String packageName = null;
-		String className = null;
-		String filename = null;
-		Class<?> clazz = null;
+	private void createComponents() throws Exception {
+		Reflections reflections = new Reflections("kt.c");
+		Set<Class<?>> classList = reflections.getTypesAnnotatedWith(Component.class);
 		Component compAnno = null;
 		
-		for (String path : pathList) {
-			dir = new File(path);
-			//System.out.println(dir.getName() + "---------------------------");
-			//System.out.println(dir.getAbsolutePath());
-			
-			absolutePath = dir.getAbsolutePath();
-			index = absolutePath.indexOf("kt\\c");
-			packageName = absolutePath.substring(index).replace("\\", ".");
-			//System.out.println(packageName);
-			
-			File[] files = dir.listFiles();
-			for (File file : files) {
-				filename = file.getName();
-				if (filename.endsWith(".class")) {
-					//System.out.println(filename);
-					className = filename.replace(".class", "");
-					
-					// 패키지명+클래스명(.class 확장자 제거) => 클래스 로딩 
-					clazz = Class.forName(packageName + "." + className);
-					
-					// 클래스 정보로부터 Component 애노테이션 객체 꺼낸다.
-					compAnno = (Component)clazz.getAnnotation(Component.class);
-					if (compAnno != null) { // 해당 클래스 Component 애노테이션이 있다면,
-						System.out.println("=>" + compAnno.value() + ":" + clazz.getName()); 
-						ctx.setAttribute(compAnno.value(), clazz.newInstance());
-					}
-				}
+		for (Class<?> clazz : classList) {
+			compAnno = (Component)clazz.getAnnotation(Component.class);
+			if (compAnno != null) { 
+				ctx.setAttribute(compAnno.value(), clazz.newInstance());
 			}
 		}
 	}
