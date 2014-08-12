@@ -1,20 +1,22 @@
-package ex01;
+package ex02;
 
 public class Car {
 	String model;
 	int cc;
-	String maker;
+	Engine engine;
 	
-	public Car() {
-		System.out.println("Car() 호출됨...");
-	} // 기본 생성자. 생성자가 없으면 자동으로 만든다.
+	public Car() {} 
 	
 	public Car(String model, int cc) {
-		System.out.println("Car(model,cc) 호출됨...");
 		this.model = model;
 		this.cc = cc;
 	}
 	
+	@Override
+  public String toString() {
+	  return "Car [model=" + model + ", cc=" + cc + ", engine=" + engine + "]";
+  }
+
 	public String getModel() {
 		return model;
 	}
@@ -26,5 +28,11 @@ public class Car {
 	}
 	public void setCc(int cc) {
 		this.cc = cc;
+	}
+	public Engine getEngine() {
+		return engine;
+	}
+	public void setEngine(Engine engine) {
+		this.engine = engine;
 	}
 }

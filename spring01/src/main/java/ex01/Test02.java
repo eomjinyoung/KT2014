@@ -14,7 +14,7 @@ public class Test02 {
 		 */
 		Car p = (Car)ctx.getBean("car1");
 		
-		Car p2 = (Car)ctx.getBean("car2");
+		//Car p2 = (Car)ctx.getBean("car2"); //car2는 존재하지 않는 빈이기 때문에 예외 발생!
 	}
 
 }
