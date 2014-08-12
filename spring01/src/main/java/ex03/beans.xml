@@ -74,6 +74,27 @@
 		</property>
 	</bean>
 	
+	<bean id="tire3" class="ex03.Tire" p:diameter="24 inch"/>
+	
+	<!-- Map 타입의 프로퍼티 값 설정하기 -->
+	<bean id="car3" class="ex03.Car">
+		<property name="options">
+			<map>
+				<entry>
+					<key><value>airbag</value></key>
+					<value>YES</value>
+				</entry>
+				<entry key="sunroof" value="NO"/>
+				<entry key="spareTire" value-ref="tire3"/>
+				<entry key="spareTire2">
+					<ref bean="tire3"/>
+				</entry>
+				<entry key="spareTire3">
+					<bean class="ex03.Tire" p:diameter="25 inch"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
 
 </beans>
 

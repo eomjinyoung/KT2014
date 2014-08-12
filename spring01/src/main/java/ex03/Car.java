@@ -1,6 +1,7 @@
 package ex03;
 
 import java.util.List;
+import java.util.Map;
 
 public class Car {
 	String model;
@@ -8,6 +9,7 @@ public class Car {
 	Engine engine;
 	String[] tires;
 	List<Object> cdBox;
+	Map<String,Object> options;
 	
 	public Car() {} 
 	
@@ -51,5 +53,10 @@ public class Car {
 	public void setCdBox(List<Object> cdBox) {
 		this.cdBox = cdBox;
 	}
-
+	public Map<String, Object> getOptions() {
+		return options;
+	}
+	public void setOptions(Map<String, Object> options) {
+		this.options = options;
+	}
 }
