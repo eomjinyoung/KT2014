@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+	<bean id="car1" class="ex04.CarFactory"/>
+	
+	<!-- 팩토리 클래스로부터 객체를 생성하기 
+		=> 팩토리 기능을 수행하는 메서드 이름을 지정한다.
+		=> factory-method="팩토리 메서드 이름"
+		=> 팩토리 메서드는 반드시 static 메서드여야 한다.
+		=> 팩토리 메서드의 파라미터 값은 <constructor-arg> 태그를 사용하여 지정한다.
+		=> 강조!!! 
+		   car1 이름으로 저장되는 것은 CarFactory가 아니라 createCar()의 리턴 값이다.
+	 -->
+	<bean id="car2" class="ex04.CarFactory" factory-method="createCar">
+		<constructor-arg value="tico"/>
+	</bean>
+	
+	<bean id="car3" class="ex04.CarFactory" factory-method="createCar">
+		<constructor-arg value="sonata"/>
+	</bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
