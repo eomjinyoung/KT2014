@@ -19,6 +19,14 @@ public class Test11 {
 		Object bean3 = ctx.getBean("car3");
 		System.out.println(bean3.getClass().getName());
 		System.out.println(bean3);
+		
+		Object bean4 = ctx.getBean("car4");
+		System.out.println(bean4.getClass().getName());
+		System.out.println(bean4);
+		
+		Object bean5 = ctx.getBean("car5");
+		System.out.println(bean5.getClass().getName());
+		System.out.println(bean5);
 	}
 
 }
