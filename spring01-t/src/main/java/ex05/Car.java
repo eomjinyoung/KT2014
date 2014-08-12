@@ -1,5 +1,6 @@
 package ex05;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /* 애노테이션을 이용하여 빈 설정하기 
@@ -11,6 +12,11 @@ import org.springframework.stereotype.Component;
  * => 단, 스프링 설정 파일에 이런 애노테이션을 처리할 담당자를 지정해야 한다.
  *    <context:component-scan base-package="탐색 시작 패키지"/>
  * 
+ * @Autowired 애노테이션
+ * => 지정된 프로퍼티와 일치하는 타입의 객체를 찾아서 자동 주입한다.
+ * => 붙일 수 있는 곳: 생성자, setter 메서드, 인스턴스 변수(public 인 경우)
+ * => 만약 같은 타입의 객체가 여러 개 있을 경우 오류 발생
+ *    
  */
 
 @Component
@@ -46,6 +52,8 @@ public class Car {
 	public Engine getEngine() {
 		return engine;
 	}
+	
+	@Autowired
 	public void setEngine(Engine engine) {
 		this.engine = engine;
 	}

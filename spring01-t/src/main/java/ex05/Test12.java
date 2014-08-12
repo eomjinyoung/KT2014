@@ -13,6 +13,9 @@ public class Test12 {
 		// 인스턴스는 클래스 이름(첫 알파벳 소문자)으로 보관한다.
 		Car car1 = (Car)ctx.getBean("car");
 		System.out.println(car1);
+		
+		Engine engine1 = (Engine)ctx.getBean("engine1");
+		System.out.println(engine1);
 	}
 
 }
