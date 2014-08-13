@@ -127,6 +127,19 @@ public class BoardController {
 				boardNo);
 	}
 	
+	@RequestMapping(value="/update", method=RequestMethod.GET)
+	public String updateForm(int no, Model model) throws Exception {
+		BoardVO board = boardDAO.selectByNo(no);
+		model.addAttribute("board", board);
+		return "/view/board/updateForm.jsp";
+	}
+	
+	@RequestMapping(value="/update", method=RequestMethod.POST)
+	public String update(BoardVO board) throws Exception {	
+		boardDAO.update(board);
+		return "redirect:list.do";
+	}
+	
 }
 
 
