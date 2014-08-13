@@ -8,7 +8,7 @@ import kt.c.dao.BoardDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("/board/detail.do")
+//@Component("/board/detail.do")
 public class BoardDetailController implements ControllerX {
 	@Autowired
 	BoardDAO boardDAO;

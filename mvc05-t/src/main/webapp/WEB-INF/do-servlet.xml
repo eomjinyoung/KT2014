@@ -16,4 +16,10 @@
 	<!-- MVC 관련 애노테이션을 처리할 작업자를 활성화시킨다.   -->
 	<mvc:annotation-driven/>
 
+	<!-- 멀티파트 폼 데이터를 처리할 객체를 활성화 한다. -->
+	<bean id="multipartResolver"
+	        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	  <property name="maxUploadSize" value="5000000"/>
+	</bean>
+
 </beans>

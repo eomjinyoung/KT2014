@@ -8,7 +8,7 @@ import kt.c.dao.BoardDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("/board/delete.do")
+//@Component("/board/delete.do")
 public class BoardDeleteController implements ControllerX {
 	@Autowired
 	BoardDAO boardDAO;
