@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 //@Controller
-@RequestMapping("/auth") // 클래스 선언부에서 기본 URL을 지정하고, 요청 핸들러(메서드)에서는 나머지 URL 지정
-public class LoginController {
+//@RequestMapping("/auth/login") // 각 요청 핸들러에서 URL을 정보를 설정할 수 있다.
+public class LoginController02 {
 	@Autowired
 	LoginDAO loginDAO;
 
-	@RequestMapping(value="/login", method=RequestMethod.GET)
+	@RequestMapping(value="/auth/login", method=RequestMethod.GET)
 	public String loginForm() throws Exception {
 		return "/view/auth/login.jsp";
 	}
 	
-	@RequestMapping(value="/login", method=RequestMethod.POST)
+	@RequestMapping(value="/auth/login", method=RequestMethod.POST)
 	public String login(HttpServletRequest request) throws Exception {		
 		LoginVO userVO = loginDAO.login(
 									new LoginVO()
