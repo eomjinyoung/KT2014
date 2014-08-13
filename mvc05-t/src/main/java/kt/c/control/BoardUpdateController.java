@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component("/board/update.do")
-public class BoardUpdateController implements Controller {
+public class BoardUpdateController implements ControllerX {
 	@Autowired
 	BoardDAO boardDAO;
 	

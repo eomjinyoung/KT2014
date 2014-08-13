@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kt.c.control.Controller;
+import kt.c.control.ControllerX;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-@WebServlet("*.do")
+//@WebServlet("*.do")
 @SuppressWarnings("serial")
 public class DispatcherServlet extends HttpServlet {
 	@Override
@@ -37,11 +37,11 @@ public class DispatcherServlet extends HttpServlet {
 	  	Object obj = iocContainer.getBean(servletPath);
 	  	
 	  	
-	  	if (obj == null || !(obj instanceof Controller)) {
+	  	if (obj == null || !(obj instanceof ControllerX)) {
 	  		throw new Exception("요청하는 페이지가 없습니다.");
 	  	}
 	  	
-		  Controller pageController = (Controller)obj;
+		  ControllerX pageController = (ControllerX)obj;
 	  
 		  String viewUrl = pageController.execute(request, response);
 		  

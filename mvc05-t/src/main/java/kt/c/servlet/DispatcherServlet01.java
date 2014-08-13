@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.ApplicationContext;
 
-import kt.c.control.Controller;
+import kt.c.control.ControllerX;
 
 //@WebServlet("*.do")
 @SuppressWarnings("serial")
@@ -34,11 +34,11 @@ public class DispatcherServlet01 extends HttpServlet {
 	  	Object obj = iocContainer.getBean(servletPath);
 	  	
 	  	
-	  	if (obj == null || !(obj instanceof Controller)) {
+	  	if (obj == null || !(obj instanceof ControllerX)) {
 	  		throw new Exception("요청하는 페이지가 없습니다.");
 	  	}
 	  	
-		  Controller pageController = (Controller)obj;
+		  ControllerX pageController = (ControllerX)obj;
 	  
 		  String viewUrl = pageController.execute(request, response);
 		  

@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component("/auth/login.do")
-public class LoginController implements Controller {
+public class LoginController implements ControllerX {
 	@Autowired
 	LoginDAO loginDAO;
 

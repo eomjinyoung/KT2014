@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component("/board/delete.do")
-public class BoardDeleteController implements Controller {
+public class BoardDeleteController implements ControllerX {
 	@Autowired
 	BoardDAO boardDAO;
 	
