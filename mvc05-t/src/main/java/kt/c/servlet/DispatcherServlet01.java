@@ -11,14 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+
 import kt.c.control.Controller;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
-@WebServlet("*.do")
+//@WebServlet("*.do")
 @SuppressWarnings("serial")
-public class DispatcherServlet extends HttpServlet {
+public class DispatcherServlet01 extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
@@ -26,14 +25,12 @@ public class DispatcherServlet extends HttpServlet {
 	  response.setContentType("text/html; charset=UTF-8");
 	  
 	  try {
-	  	/* 스프링 ContextLoaderListener가 IoC 컨테이너를 관리한다.
-	  	 * => ServletContext에서 IoC 컨테이너를 얻을 수 없다.
-	  	 * => 스프링의 도우미 클래스로부터 IoC 컨테이너를 얻어야 한다.
+	  	/* 스프링 컨테이너가 관리하고 있는 페이지 컨트롤러 꺼내기
+	  	 * Bean Container == IoC Container 
 	  	 */
 	  	ApplicationContext iocContainer = 
-	  			WebApplicationContextUtils.getWebApplicationContext(
-	  																			request.getServletContext());
-	  		
+	  		(ApplicationContext)this.getServletContext()
+	  														.getAttribute("beanContainer");
 	  	Object obj = iocContainer.getBean(servletPath);
 	  	
 	  	

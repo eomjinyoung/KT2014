@@ -7,7 +7,7 @@ import javax.servlet.ServletContextListener;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class ContextLoaderListener implements ServletContextListener {
+public class ContextLoaderListener01 implements ServletContextListener {
 	/* 웹 애플리케이션이 시작되면 호출된다.*/
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {

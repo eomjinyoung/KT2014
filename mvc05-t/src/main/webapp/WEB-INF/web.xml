@@ -2,9 +2,22 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>Mission-Web</display-name>
   
+  <!-- <context-param> : 웹 애플리케이션에서 사용할 프로퍼티 등록하기 -->
+  <!-- 스프링의 ContextLoaderListener가 사용할 스프링 설정 파일의 위치 정보  -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+<!-- 		<param-value>classpath:kt/c/conf/application-context.xml</param-value> -->
+		<param-value>/WEB-INF/application-context.xml</param-value>
+	</context-param>
+  
   <!-- 이벤트를 처리할 리스너 등록 -->
   <listener>
-  	<listener-class>kt.c.listener.ContextLoaderListener</listener-class>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  	<!-- <listener-class>kt.c.listener.ContextLoaderListener</listener-class> -->
+  </listener>
+		  
+  <listener>
+		<listener-class>kt.c.listener.AppInitListener</listener-class>
   </listener>
   
   <!-- 필터 정의  -->
