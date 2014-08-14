@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시판</title>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+</head>
+<body>
+<h1>게시판 목록</h1>
+<table id="boardTable" class="table table-striped">
+<tr>
+	<th>번호</th>
+	<th>제목</th>
+	<th>글쓴이</th>
+	<th>등록일</th>
+</tr>
+</table>
+
+
+<script>
+//1. 서버에 HTTP 요청을 보내는 도구 준비
+var xhr = new XMLHttpRequest();
+
+//2. 서버 정보 설정
+xhr.open("GET", "ajax/list.do", false); 
+
+//3. 서버에 요청을 보냄
+xhr.send(null);
+
+//4. 서버의 응답 결과(JSON 형식의 문자열) => 자바스크립트 객체를 생성
+//console.log(xhr.responseText);
+var list = JSON.parse(xhr.responseText);
+
+var boardTable = document.getElementById("boardTable");
+
+var trStr;
+var trTag, tdTag;
+for (var i in list) {
+	/*
+	trStr = "<tr><td>" + list[i].no + "</td><td>"
+		+ list[i].title + "</td><td>" 
+		+ list[i].writer + "</td><td>"
+		+ list[i].regDate + "</td></tr>";
+	console.log(tr);
+	*/
+	trTag = document.createElement("tr");
+	tdTag = document.createElement("td");
+	tdTag.innerHTML = list[i].no;
+	trTag.appendChild(tdTag);
+	
+	tdTag = document.createElement("td");
+	tdTag.innerHTML = list[i].title;
+	trTag.appendChild(tdTag);
+	
+	tdTag = document.createElement("td");
+	tdTag.innerHTML = list[i].writer;
+	trTag.appendChild(tdTag);
+	
+	tdTag = document.createElement("td");
+	tdTag.innerHTML = list[i].regDate;
+	trTag.appendChild(tdTag);
+	
+	boardTable.appendChild(trTag);	
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
