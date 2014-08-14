@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+// 자바스크립트의 글로벌 변수,함수는 window에 소속된다.
+// 변수선언 : var, 함수선언: function
+"use strict"; //문법 엄격하게 검사
+
+var v1 = '홍길동';
+console.log(window.v1);
+
+//함수 만들기
+//스크립트 실행 순서: <script>태그 안에서 함수 선언문을 먼저 실행한다. 그리고 다시 처음부터 실행한다.
+console.log("1."); f1();
+//console.log("5."); f3(); // 오류..
+
+function f1() { // 정의하는 위치에 상관없이 호출가능
+	console.log("함수1...");
+}
+
+var f2 = function() { // 정의한 다음 호출해야 한다.
+	console.log("함수2....");
+};
+
+var f3 = f1;
+
+console.log("2."); f1();
+console.log("3."); f2();
+console.log("4."); f3();
+
+// 
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시판</title>
+</head>
+<body>
+<h1>게시판 목록</h1>
+<table>
+<tr>
+	<th>번호</th>
+	<th>제목</th>
+	<th>글쓴이</th>
+	<th>등록일</th>
+</tr>
+</table>
+
+
+<script>
+//1. 서버에 HTTP 요청을 보내는 도구 준비
+var xhr = new XMLHttpRequest();
+
+//2. 서버 정보 설정
+xhr.open("GET", "list.do", false);
+
+//3. 서버에 요청을 보냄
+xhr.send(null);
+
+//4. 서버의 응답을 출력함
+console.log(xhr.responseText);
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
