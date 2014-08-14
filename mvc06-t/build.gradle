@@ -27,6 +27,7 @@ repositories {
 
 dependencies {
 	providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
+	compile 'com.google.code.gson:gson:2.2.4'
 	compile 'org.springframework:spring-jdbc:4.0.6.RELEASE'
 	compile 'org.mybatis:mybatis-spring:1.2.2'
 	compile 'org.mybatis:mybatis:3.2.7'
